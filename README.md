@@ -1,29 +1,30 @@
-# Shadcn/ui for Sealos frontend apps
+# @labring/sealos-ui
 
-## Getting started (for Next.js apps)
+Shared shadcn-based UI components for Sealos frontend apps.
 
-### Install dependencies
+## Getting started (Next.js / React apps)
+
+### 1) Install dependencies
 
 ```sh
-# Tailwind CSS and PostCSS
-pnpm install tailwindcss @tailwindcss/postcss postcss
+# package + peer deps
+pnpm add @labring/sealos-ui react-hook-form sonner
 
-# RHF (for `Form` component), Sonner (for `Sonner` component)
-pnpm install react-hook-form sonner
+# Tailwind v4 + PostCSS
+pnpm add -D tailwindcss @tailwindcss/postcss postcss
 ```
 
+For workspace usage, you can also add this in `package.json`:
+
 ```jsonc
-// package.json
 {
-  //...
   "dependencies": {
-    // ...
-    "@labring/sealos-shadcn-ui": "workspace:^" // <== Add this
+    "@labring/sealos-ui": "workspace:^"
   }
 }
 ```
 
-### Add PostCSS config file
+### 2) Add PostCSS config
 
 ```js
 // postcss.config.mjs
@@ -34,42 +35,36 @@ export default {
 };
 ```
 
-### Import Tailwind CSS and UI styles
+### 3) Import styles in your app entry stylesheet
 
-Import this file in your root layout / app root component.
+Import in your root stylesheet (for example `global.css`):
 
 ```css
-/* global.css */
+/* Tailwind CSS, theme tokens and base shared styles */
+@import '@labring/sealos-ui/shadcn.css';
 
-/* Tailwind CSS, default theme, common utilities/components and required plugins */
-@import '@labring/sealos-shadcn-ui/shadcn.css';
-
-/* UI components search path */
-@import '@labring/sealos-shadcn-ui/styles.css';
-
-/* theme override, plugins, utilities, other styles, etc. */
-/* ... */
+/* Tailwind @source path for shared UI components */
+@import '@labring/sealos-ui/styles.css';
 ```
 
 ## Usage
 
-### Import path
-
-```js
-// Both are recommended import styles
-import { Button } from '@labring/sealos-shadcn-ui';
-import { Button } from '@labring/sealos-shadcn-ui/button';
+```tsx
+import { Button, cn } from '@labring/sealos-ui';
 ```
 
-### `cn` utility
+Subpath import is also supported:
 
-```js
-// Easier tailwind-merge and clsx
-import { cn } from '@labring/sealos-shadcn-ui';
+```tsx
+import { Button } from '@labring/sealos-ui/button';
 ```
 
 ## Developing this package
 
-### Adding a component/hook using shadcn CLI
+```sh
+pnpm typecheck
+```
 
-See: [shadcn/ui document](https://ui.shadcn.com/docs/cli)
+### Adding component/hook with shadcn CLI
+
+See: [shadcn/ui docs](https://ui.shadcn.com/docs/cli)
