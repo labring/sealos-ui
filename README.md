@@ -40,11 +40,8 @@ export default {
 Import in your root stylesheet (for example `global.css`):
 
 ```css
-/* Tailwind CSS, theme tokens and base shared styles */
+/* Tailwind CSS + theme tokens + base shared styles + shared component @source */
 @import '@labring/sealos-ui/shadcn.css';
-
-/* Tailwind @source path for shared UI components */
-@import '@labring/sealos-ui/styles.css';
 ```
 
 ## Usage
@@ -63,6 +60,22 @@ import { Button } from '@labring/sealos-ui/button';
 
 ```sh
 pnpm typecheck
+```
+
+## Local Showcase App
+
+The repository now includes a private showcase app generated with `shadcn create` at `apps/showcase`.
+It is for local UI preview only and is not published to npm.
+
+```sh
+pnpm install
+pnpm showcase:dev
+```
+
+Build preview app:
+
+```sh
+pnpm showcase:build
 ```
 
 ### Adding component/hook with shadcn CLI
