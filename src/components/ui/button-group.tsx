@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { Children, ReactElement, cloneElement } from 'react';
+import { Children, cloneElement } from 'react';
+import type { ReactElement } from 'react';
 
-import { ButtonProps } from '../../components/ui/button';
+import type { ButtonProps } from './button';
 import { cn } from '../../lib/utils';
 
 interface ButtonGroupProps {

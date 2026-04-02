@@ -5,6 +5,8 @@
 @import './base.css';
 @import './theme.css';
 
+@source '..';
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

@@ -1,7 +1,8 @@
 'use client';
 
-import * as React from 'react';
-import { Toaster as Sonner, ToasterProps } from 'sonner';
+import type { CSSProperties } from 'react';
+import { Toaster as Sonner } from 'sonner';
+import type { ToasterProps } from 'sonner';
 
 interface ToasterComponentProps extends ToasterProps {
   theme?: 'light' | 'dark' | 'system';
@@ -19,7 +20,7 @@ const Toaster = ({ theme = 'system', ...props }: ToasterComponentProps) => {
           '--normal-bg': 'var(--popover)',
           '--normal-text': 'var(--popover-foreground)',
           '--normal-border': 'var(--border)'
-        } as React.CSSProperties
+        } as CSSProperties
       }
       {...props}
     />

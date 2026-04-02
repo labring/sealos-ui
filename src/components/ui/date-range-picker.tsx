@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { addDays, format } from 'date-fns';
-import { DateRange } from 'react-day-picker';
+import type { DateRange } from 'react-day-picker';
 import { Calendar as CalendarIcon } from 'lucide-react';
 
 import { cn } from '../../lib/utils';
