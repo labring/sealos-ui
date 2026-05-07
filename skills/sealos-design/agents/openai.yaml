@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sealos Design"
+  short_description: "Design Sealos product console interfaces."
+  default_prompt: "Use $sealos-design to design or polish this Sealos frontend surface."

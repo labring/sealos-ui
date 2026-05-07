@@ -81,3 +81,19 @@ pnpm showcase:build
 ### Adding component/hook with shadcn CLI
 
 See: [shadcn/ui docs](https://ui.shadcn.com/docs/cli)
+
+## Sealos Design Skill
+
+This repository also ships the `sealos-design` agent skill alongside the UI package.
+
+Install it from the GitHub repo with the Skills CLI:
+
+```sh
+npx skills add mlhiter/sealos-ui --skill sealos-design
+```
+
+Or install by path:
+
+```sh
+npx skills add https://github.com/mlhiter/sealos-ui/tree/main/skills/sealos-design
+```
