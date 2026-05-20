@@ -25,9 +25,9 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        'bg-background group/calendar [--cell-size:34px] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent',
-        String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
-        String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
+        'bg-background group/calendar [--cell-size:34px] ',
+        String.raw`rtl:[&_.rdp-button\_next>svg]:rotate-180`,
+        String.raw`rtl:[&_.rdp-button\_previous>svg]:rotate-180`,
         className
       )}
       captionLayout={captionLayout}
@@ -48,24 +48,24 @@ function Calendar({
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          'size-(--cell-size) aria-disabled:opacity-50 p-0 select-none [&_svg]:scale-90',
+          'h-[var(--cell-size)] w-[var(--cell-size)] aria-disabled:opacity-50 p-0 select-none [&_svg]:scale-90',
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          'size-(--cell-size) aria-disabled:opacity-50 p-0 select-none [&_svg]:scale-90',
+          'h-[var(--cell-size)] w-[var(--cell-size)] aria-disabled:opacity-50 p-0 select-none [&_svg]:scale-90',
           defaultClassNames.button_next
         ),
         month_caption: cn(
-          'flex items-center justify-center h-(--cell-size) w-full px-(--cell-size)',
+          'flex items-center justify-center h-[var(--cell-size)] w-full px-[var(--cell-size)]',
           defaultClassNames.month_caption
         ),
         dropdowns: cn(
-          'w-full flex items-center text-sm font-medium justify-center h-(--cell-size) gap-1.5',
+          'w-full flex items-center text-sm font-medium justify-center h-[var(--cell-size)] gap-1.5',
           defaultClassNames.dropdowns
         ),
         dropdown_root: cn(
-          'relative has-focus:border-ring border border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] rounded-md',
+          'relative focus-within:border-ring border border-input shadow-sm focus-within:ring-ring/50 focus-within:ring-[3px] rounded-md',
           defaultClassNames.dropdown_root
         ),
         dropdown: cn('absolute bg-popover inset-0 opacity-0', defaultClassNames.dropdown),
@@ -83,7 +83,7 @@ function Calendar({
           defaultClassNames.weekday
         ),
         week: cn('flex w-full mt-2', defaultClassNames.week),
-        week_number_header: cn('select-none w-(--cell-size)', defaultClassNames.week_number_header),
+        week_number_header: cn('select-none w-[var(--cell-size)]', defaultClassNames.week_number_header),
         week_number: cn(
           'text-[0.8rem] select-none text-muted-foreground',
           defaultClassNames.week_number
@@ -126,7 +126,7 @@ function Calendar({
         WeekNumber: ({ children, ...props }) => {
           return (
             <td {...props}>
-              <div className="flex size-(--cell-size) items-center justify-center text-center">
+              <div className="flex h-[var(--cell-size)] w-[var(--cell-size)] items-center justify-center text-center">
                 {children}
               </div>
             </td>

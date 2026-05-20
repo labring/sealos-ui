@@ -10,8 +10,8 @@ Shared shadcn-based UI components for Sealos frontend apps.
 # package + peer deps
 pnpm add @labring/sealos-ui react-hook-form sonner
 
-# Tailwind v4 + PostCSS
-pnpm add -D tailwindcss @tailwindcss/postcss postcss
+# Tailwind v3 + PostCSS
+pnpm add -D tailwindcss@^3.4.19 tailwindcss-animate postcss autoprefixer
 ```
 
 For workspace usage, you can also add this in `package.json`:
@@ -30,17 +30,72 @@ For workspace usage, you can also add this in `package.json`:
 // postcss.config.mjs
 export default {
   plugins: {
-    '@tailwindcss/postcss': {}
+    tailwindcss: {},
+    autoprefixer: {}
   }
 };
 ```
 
-### 3) Import styles in your app entry stylesheet
+### 3) Add package files to Tailwind content
 
-Import in your root stylesheet (for example `global.css`):
+```ts
+// tailwind.config.ts
+export default {
+  darkMode: 'class',
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@labring/sealos-ui/src/**/*.{js,ts,jsx,tsx,mdx}'
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        card: {
+          DEFAULT: 'var(--card)',
+          foreground: 'var(--card-foreground)'
+        },
+        popover: {
+          DEFAULT: 'var(--popover)',
+          foreground: 'var(--popover-foreground)'
+        },
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)'
+        },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)'
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)'
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)'
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)'
+        },
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)'
+      }
+    }
+  },
+  plugins: [require('tailwindcss-animate')]
+};
+```
+
+### 4) Import styles in your app entry stylesheet
+
+Import in your root stylesheet only if the app does not already define Sealos theme tokens:
 
 ```css
-/* Tailwind CSS + theme tokens + base shared styles + shared component @source */
+/* Tailwind CSS + theme tokens + base shared styles */
 @import '@labring/sealos-ui/shadcn.css';
 ```
 
